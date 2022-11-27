@@ -1,0 +1,9 @@
+.gradle
+.idea
+gradle
+webapp/node_modules
+
+gradlew
+gradlew.bat
+HELP.md
+settings.gradle.kts
