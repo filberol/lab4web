@@ -1,0 +1,29 @@
+/* Common */
+@font-face {
+    font-family: miratrix;
+    src: url("./fonts/miratrix.otf");
+}
+
+* {
+    font-family: miratrix, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    letter-spacing: 1px;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+
+p {
+    letter-spacing: 0;
+    font-size: 20px;
+    margin: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+a {
+    display: flex;
+    text-decoration: none;
+    color: black;
+}

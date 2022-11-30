@@ -1,0 +1,27 @@
+#night-mode {
+  display: flex;
+  padding: 0;
+  align-items: center;
+  width: 70px;
+  height: 30px;
+  background-color: #555;
+  font-size: 0;
+
+  &.active {
+    background-color: #ccc;
+  }
+}
+
+#dragged {
+  position: relative;
+  left: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  background-color: darkcyan;
+  transition: 0.5s ease-in-out;
+
+  &.active {
+    transform: translateX(40px);
+  }
+}
