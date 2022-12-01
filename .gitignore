@@ -1,6 +1,7 @@
 .gradle
 .idea
 gradle
+build
 webapp/node_modules
 
 gradlew

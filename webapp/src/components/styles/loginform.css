@@ -1,0 +1,18 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-form input, .login-form button {
+  padding: 5px;
+  margin: 5px;
+}
+.login-form div {
+  margin-bottom: 20px;
+}
+.login-form div label {
+  font-size: 13px;
+}
+
+/*# sourceMappingURL=loginform.css.map */

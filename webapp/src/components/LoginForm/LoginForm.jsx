@@ -1,10 +1,12 @@
 import React, {useState} from "react";
+import "../styles/loginform.css"
+import {showPass} from "./LoginForm.module";
 
 function LoginForm() {
     let [username, setUsername] = useState()
     let [password, setPassword] = useState()
     return (
-        <div>
+        <div className="login-form">
             <input
                 id="login-f"
                 type="text"
@@ -21,24 +23,18 @@ function LoginForm() {
                 className="header-block"
                 onChange={e => setPassword(e.target.value)}
             />
-            <input
-                id="show-c"
-                type="checkbox"
-                onClick={showPass}
-            />
+            <div>
+                <input
+                    id="show-c"
+                    type="checkbox"
+                    onClick={showPass}
+                />
+                <label htmlFor="show-c">Показать пароль</label>
+            </div>
+            <button className="header-block">Войти</button>
+            <button className="header-block">Зарегистрироваться</button>
         </div>
     )
 }
-
-function showPass() {
-    console.log("clicked")
-    const x = document.querySelector("#pass-f");
-    if (x.type === "password") {
-        x.type = "text";
-    } else {
-        x.type = "password";
-    }
-}
-
 
 export default LoginForm

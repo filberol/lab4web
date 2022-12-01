@@ -14,6 +14,7 @@ function Login() {
             <Description />
             <ContentHandler>
                 <ContentContainer classes="target-container">
+                    Тема не сохраняется
                     <ClockWatch />
                     <LoginForm />
                 </ContentContainer>
