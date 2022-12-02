@@ -1,12 +1,32 @@
 import React, {useState} from "react";
 import "../styles/loginform.css"
-import {showPass} from "./LoginForm.module";
+import {requestServerAction, showPass} from "./LoginForm.module";
+import {useNavigate} from "react-router-dom";
 
 function LoginForm() {
+    const navigate = useNavigate()
     let [username, setUsername] = useState()
     let [password, setPassword] = useState()
+    const [message, setMessage] = useState("");
+
+    const handleRegistration = async (e) => {
+        e.preventDefault();
+        requestServerAction(username, password, setMessage, "PUT", () => {
+            setMessage("Регистрация успешна")
+        })
+    }
+
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        requestServerAction(username, password, setMessage, "POST", (result) => {
+            localStorage.setItem("token", result.token)
+            navigate("/main")
+        })
+    }
+
     return (
         <div className="login-form">
+            <div>{message}</div>
             <input
                 id="login-f"
                 type="text"
@@ -31,8 +51,8 @@ function LoginForm() {
                 />
                 <label htmlFor="show-c">Показать пароль</label>
             </div>
-            <button className="header-block">Войти</button>
-            <button className="header-block">Зарегистрироваться</button>
+            <button className="header-block" onClick={handleLogin}>Войти</button>
+            <button className="header-block" onClick={handleRegistration}>Зарегистрироваться</button>
         </div>
     )
 }

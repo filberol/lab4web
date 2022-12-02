@@ -1,18 +1,25 @@
 import React from 'react';
-import Login from "./pages/Login";
-import { createRoot } from "react-dom/client";
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import {createRoot} from "react-dom/client";
+import {createBrowserRouter, RouterProvider} from "react-router-dom";
 import Main from "./pages/Main";
+import Login from "./pages/Login";
+import NotFound from "./pages/NotFound";
+import Header from "./components/Header/Header";
+import Description from "./components/Description/Description";
+import ContentHandler from "./components/ContentHandler/ContentHandler";
 
 const router = createBrowserRouter([
-    {
-        path: "/", element: <Login />,
-    },
-    {
-        path: "main", element: <Main />,
-    },
+    { path: "/", element: <Login /> },
+    { path: "main", element: <Main /> },
+    { path: "*", element: <NotFound />}
 ]);
 
 createRoot(document.querySelector('#root')).render(
-    <RouterProvider router={router} />
+    <div className="content-frame">
+        <Header />
+        <Description />
+        <ContentHandler>
+            <RouterProvider router={router}/>
+        </ContentHandler>
+    </div>
 );

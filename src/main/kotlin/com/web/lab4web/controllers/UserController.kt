@@ -1,5 +1,7 @@
 package com.web.lab4web.controllers
 
+import com.web.lab4web.dto.AuthResponseDto
+import com.web.lab4web.dto.RegResponseDto
 import com.web.lab4web.dto.UserDto
 import com.web.lab4web.entities.UserEntity
 import com.web.lab4web.repos.UserRepository
@@ -7,10 +9,12 @@ import com.web.lab4web.service.HashService
 import com.web.lab4web.service.JwtService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
+import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
 @RestController
+@CrossOrigin
 @RequestMapping("/user-api")
 class UserController {
 
@@ -21,32 +25,42 @@ class UserController {
     @Autowired
     private lateinit var hashService: HashService
 
-    @GetMapping
+    @PostMapping
     fun checkUserAuth(@Validated @RequestBody user: UserDto): ResponseEntity<Any> {
-        println(user)
         val username = user.username
         val dbUser = userRepository.findByLogin(username)
-        return if (dbUser == null || hashService.encodePassword(user.password) != dbUser.hashPass) {
-            ResponseEntity.badRequest().body("Неверное имя пользователя или пароль.")
+        return if (dbUser == null || !hashService.matchPassword(user.password, dbUser.hashPass!!)) {
+            ResponseEntity.badRequest().body(
+                AuthResponseDto("error", errorMessage = "Неверные имя пользователя или пароль")
+            )
         } else {
             val token = tokenService.generateForUser(username)
-            ResponseEntity.ok().body(token)
+            println("Authed user $username")
+            ResponseEntity.ok().body(
+                AuthResponseDto("ok", token = token)
+            )
         }
     }
 
-    @PostMapping
+    @PutMapping
     fun addUser(@Validated @RequestBody user: UserDto): ResponseEntity<Any> {
-        println(user)
+        println("Requested registration for $user")
         val username = user.username
+        println(user.password)
         return if (userRepository.findByLogin(username) != null) {
-            ResponseEntity.badRequest().body("Имя пользователя $username уже используется")
+            ResponseEntity.badRequest().body(
+                RegResponseDto("error", errorMessage = "Имя пользователя $username уже используется")
+            )
         } else {
             val newUser = UserEntity().also {
                 it.login = username
                 it.hashPass = hashService.encodePassword(user.password)
             }
             userRepository.save(newUser)
-            ResponseEntity.ok().body(username)
+            println("Saved new user $username")
+            ResponseEntity.ok().body(
+                RegResponseDto("ok")
+            )
         }
     }
 }

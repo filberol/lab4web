@@ -9,4 +9,8 @@ class HashService {
     fun encodePassword(pass: String): String {
         return encoder.encode(pass)
     }
+
+    fun matchPassword(candidate: String, hash: String): Boolean {
+        return encoder.matches(candidate, hash)
+    }
 }

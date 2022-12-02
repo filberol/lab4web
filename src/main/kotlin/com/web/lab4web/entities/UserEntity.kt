@@ -4,13 +4,15 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType
+import jakarta.persistence.Table
 
 @Entity
-class UserEntity {
+@Table(name = "strike_users")
+open class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    var id: Long? = null
+    open var id: Long? = null
 
-    var login: String? = null
-    var hashPass: String? = null
+    open var login: String? = null
+    open var hashPass: String? = null
 }

@@ -4,16 +4,17 @@ import jakarta.persistence.*
 import java.time.ZonedDateTime
 
 @Entity
-class HitEntity {
+@Table(name = "strike_hits")
+open class HitEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private var id: Long? = null
+    open var id: Long? = null
 
-    private var name: String? = null
-    private var cordX: Float? = null
-    private var cordY: Float? = null
-    private var cordR: Float? = null
-    private var time: ZonedDateTime? = null
-    private var execution: Long? = null
-    private var result: String? = null
+    open var name: String? = null
+    open var cordX: Float? = null
+    open var cordY: Float? = null
+    open var cordR: Float? = null
+    open var time: ZonedDateTime? = null
+    open var execution: Long? = null
+    open var result: String? = null
 }
