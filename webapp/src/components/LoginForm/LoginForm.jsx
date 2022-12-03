@@ -1,25 +1,28 @@
 import React, {useState} from "react";
 import "../styles/loginform.css"
-import {requestServerAction, showPass} from "./LoginForm.module";
+import {requestServerUserAction, showPass, validateLength} from "./LoginForm.module";
 import {useNavigate} from "react-router-dom";
 
 function LoginForm() {
     const navigate = useNavigate()
-    let [username, setUsername] = useState()
-    let [password, setPassword] = useState()
+    let [username, setUsername] = useState("")
+    let [password, setPassword] = useState("")
     const [message, setMessage] = useState("");
 
     const handleRegistration = async (e) => {
-        e.preventDefault();
-        requestServerAction(username, password, setMessage, "PUT", () => {
+        e.preventDefault()
+        if (!validateLength(username, password, setMessage)) return
+        requestServerUserAction(username, password, setMessage, "PUT", () => {
             setMessage("Регистрация успешна")
         })
     }
 
     const handleLogin = async (e) => {
         e.preventDefault()
-        requestServerAction(username, password, setMessage, "POST", (result) => {
+        if (!validateLength(username, password, setMessage)) return
+        requestServerUserAction(username, password, setMessage, "POST", (result) => {
             localStorage.setItem("token", result.token)
+            localStorage.setItem("username", username)
             navigate("/main")
         })
     }

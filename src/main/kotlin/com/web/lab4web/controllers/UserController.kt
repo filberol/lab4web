@@ -9,7 +9,6 @@ import com.web.lab4web.service.HashService
 import com.web.lab4web.service.JwtService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity
-import org.springframework.http.converter.HttpMessageNotReadableException
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 

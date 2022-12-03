@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 @ControllerAdvice
 class ControllerExceptions {
     @ExceptionHandler
-    fun handleIllegalStateException(ex: HttpMessageNotReadableException): ResponseEntity<Any> {
-        return ResponseEntity.badRequest().body(null)
+    fun handleWrongDto(ex: HttpMessageNotReadableException): ResponseEntity<Any> {
+        return ResponseEntity.badRequest().body("cannot read object")
     }
 }

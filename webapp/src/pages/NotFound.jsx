@@ -1,8 +1,11 @@
 import React from "react";
+import ContentHandler from "../components/ContentHandler/ContentHandler";
 
 function NotFound() {
     return (
-        <div style="text-align: center">Страница не найдена</div>
+        <ContentHandler>
+            <div>Страница не найдена</div>
+        </ContentHandler>
     )
 }
 

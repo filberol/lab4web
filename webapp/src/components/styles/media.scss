@@ -1,0 +1,38 @@
+@media (max-width: 700px) {
+  .target-container {
+    flex-direction: column;
+    justify-content: center;
+    height: 650px;
+  }
+
+  p {
+    margin: 4px;
+    font-size: 18px;
+  }
+
+  .header {
+    width: 100%;
+  }
+
+  .header ul {
+    display: none;
+  }
+
+  .header .nickname {
+    width: 170px;
+  }
+
+  .header .nickname:hover {
+    width: 229px;
+  }
+
+  #description {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 300px) {
+  .header .nickname:hover {
+    width: 170px;
+  }
+}

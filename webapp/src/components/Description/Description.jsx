@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import "../styles/description.css"
-import Dragged from "../Dragged/Dragged";
+import Dragged from "./Dragged/Dragged";
 
 function Description() {
     useEffect(() => {

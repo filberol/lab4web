@@ -6,7 +6,7 @@ import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header/Header";
 import Description from "./components/Description/Description";
-import ContentHandler from "./components/ContentHandler/ContentHandler";
+import "./components/styles/media.css"
 
 const router = createBrowserRouter([
     { path: "/", element: <Login /> },
@@ -18,8 +18,6 @@ createRoot(document.querySelector('#root')).render(
     <div className="content-frame">
         <Header />
         <Description />
-        <ContentHandler>
-            <RouterProvider router={router}/>
-        </ContentHandler>
+        <RouterProvider router={router}/>
     </div>
 );

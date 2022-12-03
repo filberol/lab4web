@@ -1,5 +1,5 @@
 import React, {useEffect} from "react";
-import "../styles/dragged.css"
+import "../../styles/dragged.css"
 import "./Dragged.module"
 import {changeMode, loadMode, switchMode} from "./Dragged.module";
 
