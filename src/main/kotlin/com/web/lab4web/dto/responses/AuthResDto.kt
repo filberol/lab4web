@@ -1,6 +1,6 @@
-package com.web.lab4web.dto
+package com.web.lab4web.dto.responses
 
-data class AuthResponseDto (
+data class AuthResDto (
     var result: String,
     var token: String? = null,
     var errorMessage: String? = null

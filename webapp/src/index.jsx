@@ -1,8 +1,8 @@
 import React from 'react';
 import {createRoot} from "react-dom/client";
 import {createBrowserRouter, RouterProvider} from "react-router-dom";
-import Main from "./pages/Main";
-import Login from "./pages/Login";
+import Main from "./pages/Main/Main";
+import Login from "./pages/Login/Login";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header/Header";
 import Description from "./components/Description/Description";

@@ -5,6 +5,17 @@ import RCheck from "./rCheck/rCheck";
 import "../styles/inputform.css"
 
 function InputForm(props) {
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        props.submitter()
+    }
+
+    const handleDelete = async (e) => {
+        e.preventDefault()
+        props.deleter()
+    }
+
     return (
         <div className="target glass">
             <form className="form">
@@ -14,6 +25,8 @@ function InputForm(props) {
                     <YCheck state={{y: props.states.y, setY: props.setters.setY}}/>
                     <RCheck state={{r: props.states.r, setR: props.setters.setR}}/>
                 </fieldset>
+                <button onClick={handleSubmit} className="content-text bordered">Отправить</button>
+                <button onClick={handleDelete} className="content-text bordered">Сбросить</button>
             </form>
         </div>
     )

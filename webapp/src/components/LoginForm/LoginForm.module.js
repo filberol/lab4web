@@ -7,7 +7,7 @@ export function showPass() {
     }
 }
 
-export function requestServerAction(login, password, setErrorMessage, method, onSuccess) {
+export function requestServerUserAction(login, password, setErrorMessage, method, onSuccess) {
     let data = { username: login, password: password }
     fetch("http://localhost:29950/user-api", {
         method: method,
@@ -36,4 +36,12 @@ export function requestServerAction(login, password, setErrorMessage, method, on
             }
         )
     return false
+}
+
+export function validateLength(login, password, setMessage) {
+    if (login.length <= 4 || password.length <= 4) {
+        setMessage("Логин и пароль должны быть длиннее 4 символов")
+        return false
+    }
+    return true
 }

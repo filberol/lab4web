@@ -3,12 +3,17 @@ import {draw, drawHit} from "./Canvas.module";
 
 function Canvas(props) {
     useEffect(() => {
-        draw(1)
-        props.points.forEach((point) => {
-             if (point.r === props.currRadio) {
-                 drawHit(point.x, point.y, point.r, true)
-             }
-        })
+        draw(props.currRadio)
+    }, [props.currRadio])
+    useEffect(() => {
+        // console.log(props.points)
+        if (!isNaN(props.points)) {
+            props.points.forEach((point) => {
+                if (point.r === props.currRadio) {
+                    drawHit(point.x, point.y, point.r, true)
+                }
+            })
+        }
     }, [props.points])
     return (
         <div className="target glass canvas">

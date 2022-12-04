@@ -1,4 +1,4 @@
-package com.web.lab4web.dto
+package com.web.lab4web.dto.requests
 
 data class UserDto(
     var username: String,

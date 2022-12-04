@@ -22,7 +22,7 @@ function LoginForm() {
         if (!validateLength(username, password, setMessage)) return
         requestServerUserAction(username, password, setMessage, "POST", (result) => {
             localStorage.setItem("token", result.token)
-            localStorage.setItem("username", username)
+            localStorage.setItem("login", username)
             navigate("/main")
         })
     }

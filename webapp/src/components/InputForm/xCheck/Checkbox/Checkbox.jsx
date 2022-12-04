@@ -4,7 +4,7 @@ function Checkbox(props, key) {
     const id = "checkX-" + props.val
     return (
         <div key={key}>
-            <input type="checkbox" id={id} name="checkbox" value={props.val}/>
+            <input type="checkbox" id={id} name="checkbox" value={props.val} onClick={props.onClick}/>
             <label htmlFor={id}>{props.val}</label>
         </div>
     )

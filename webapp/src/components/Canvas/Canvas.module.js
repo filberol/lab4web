@@ -3,19 +3,23 @@ export function draw(radio) {
     const ctx = canvas.getContext("2d");
     const height = canvas.height
     const width = canvas.width
+    const scale = radio/2
     ctx.fillStyle = "rgba(255, 255, 255, 1)"
     ctx.fillRect(0, 0, width, height)
 
     //draw figures
     ctx.strokeStyle = "rgba(30,107,195,0.9)"
     ctx.fillStyle = "rgba(73,158,255,0.9)"
-    drawTriangle(width/2, height/2, width/2 + width/2*radio/3, height/2, width/2, height/2 - height/2*radio/3, ctx)
+    drawTriangle(width/2, height/2, width/2, height/2 + height/2*scale, width/2 - width/4*scale, height/2, ctx)
     ctx.stroke()
-    drawRectangle(width/2 - width/2*radio/3, height/2, width/2, height/2, width/2, height/2 - radio/3*height/4, width/2 - radio/3*width/2, height/2 - radio/3*height/4, ctx)
+    ctx.moveTo(width/2, height/2)
+    const xRecScaled = width/2 + width/4*scale
+    const yRecScaled = height/2 - height/2*scale
+    drawRectangle(width/2, yRecScaled, width/2, height/2, xRecScaled, height/2, xRecScaled, yRecScaled, ctx)
     ctx.stroke()
     ctx.beginPath()
     ctx.moveTo(width/2, height/2)
-    ctx.arc(width/2, height/2, height/2 * radio/3, Math.PI/2, Math.PI, false)
+    ctx.arc(width/2, height/2, height/2 * radio/2, 0, Math.PI/2, false)
     ctx.stroke()
     ctx.fill()
 
@@ -32,7 +36,7 @@ export function draw(radio) {
     drawTriangle(width, height/2, width - off, height/2 + off, width - off, height/2 - off, ctx)
 
     //draw axis
-    new FontFace("miratrix", "url(../styles/fonts/miratrix.otf)")
+    new FontFace("miratrix", "url('../styles/fonts/miratrix.otf')")
     ctx.font = "15px miratrix"
     ctx.fillText("2", width/2 + 5, 15)
     ctx.fillText("2", width - 17, height/2 + 15)
