@@ -1,10 +1,8 @@
 package com.web.lab4web.dto.responses
 
-import java.time.ZonedDateTime
-
-data class HitResDto (
-    var cords: Array<Float>,
-    var time: ZonedDateTime,
+data class HitResDto(
+    var coords: Array<Float>,
+    var time: String,
     var exec: Long,
     var result: String
 ) {

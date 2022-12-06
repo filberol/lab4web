@@ -1,8 +1,15 @@
+@media (max-width: 1055px) {
+  .target-container {
+    flex-direction: row !important;
+    width: 800px !important;
+    height: 300px !important;
+  }
+}
 @media (max-width: 700px) {
   .target-container {
-    flex-direction: column;
+    flex-direction: column !important;
     justify-content: center;
-    height: 650px;
+    height: 590px !important;
   }
   p {
     margin: 4px;
@@ -22,6 +29,9 @@
   }
   #description {
     font-size: 15px;
+  }
+  .buttons > ul > li.header-block {
+    display: none;
   }
 }
 @media (max-width: 300px) {

@@ -24,7 +24,13 @@
 }
 
 fieldset {
-  border-radius: 5px;
+  border-radius: 15px;
+  background: lightgray;
+}
+
+.hor-buttons {
+  display: flex;
+  flex-direction: row;
 }
 
 /*# sourceMappingURL=inputform.css.map */

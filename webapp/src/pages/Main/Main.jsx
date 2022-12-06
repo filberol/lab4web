@@ -1,16 +1,16 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import ContentContainer from "../../components/ContentContainer/ContentContainer";
 import "../../components/styles/content-frame.css"
 import "../../components/styles/logout.css"
+import "../../components/styles/media.css"
 import {Link} from "react-router-dom";
 import ContentHandler from "../../components/ContentHandler/ContentHandler";
 import Canvas from "../../components/Canvas/Canvas";
 import InputForm from "../../components/InputForm/InputForm";
 import {requestHitResult, useRedirectNotKnown} from "./Main.module";
+import Table from "../../components/Table/Table";
 
-
-
-function Login() {
+function Main() {
     const login = localStorage.getItem("login")
     const token = localStorage.getItem("token")
 
@@ -21,28 +21,28 @@ function Login() {
     const [currY, setY] = useState()
     const [currR, setR] = useState()
 
-    sendGetAll()
+    useEffect(() => { sendGetAll() }, [])
 
     const deleteAuth = async () => {
-        localStorage.setItem("token", null)
-        localStorage.setItem("login", null)
+        localStorage.removeItem("token")
+        localStorage.removeItem("login")
     }
 
     function sendGetAll() {
         requestHitResult(login, token, null, "POST", (result) => {
-            setHits(result)
+            setHits(result.hits)
         })
     }
 
     function sendRequest() {
         requestHitResult(login, token, [currX, currY, currR], "PATCH", (result) => {
-            setHits(result)
+            setHits(result.hits)
         })
     }
 
     function sendDelete() {
         requestHitResult(login, token, null, "DELETE", (result) => {
-            setHits(result)
+            setHits(result.hits)
         })
     }
 
@@ -62,11 +62,11 @@ function Login() {
                 />
             </ContentContainer>
             <ContentContainer classes="table-container">
-                {/*Table*/}
+                <Table hits={hitArray} />
             </ContentContainer>
             <Link to="/" onClick={deleteAuth} className="content-text">На главную</Link>
         </ContentHandler>
     )
 }
 
-export default Login
+export default Main

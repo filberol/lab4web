@@ -6,9 +6,11 @@ function yCheck(props) {
         const text = parseFloat(field.value)
         if (isNaN(text) || text < -5 || text > 5) {
             field.style.background = "red"
+            props.setError("-5 <= y <= 5")
         } else {
             field.style.background = "green"
             props.state.setY(text)
+            props.setError("")
         }
     }
 

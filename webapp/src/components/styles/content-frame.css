@@ -3,4 +3,9 @@
   justify-content: center;
 }
 
+input {
+  background: aliceblue;
+  border-radius: 5px;
+}
+
 /*# sourceMappingURL=content-frame.css.map */

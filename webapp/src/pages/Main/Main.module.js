@@ -4,16 +4,14 @@ import {useEffect} from "react";
 export function useRedirectNotKnown() {
     const navigate = useNavigate()
     useEffect(() => {
-        if (localStorage.getItem("token") == null || localStorage.getItem("login") == null) {
+        if (localStorage.getItem("token") == null) {
             navigate("/")
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    })
 }
 
 export function requestHitResult(login, token, coords, method, onSuccess) {
-    console.log(coords)
-    if (!isNaN(coords) && !(coords == null)) {
+    if (!(coords == null)) {
         for (let i in coords[0]) {
             let data = { username: login, token: token,
                 cordX: coords[0][i],

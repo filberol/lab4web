@@ -20,7 +20,10 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-jdbc")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.security:spring-security-core:5.7.5")
-    implementation("com.auth0:java-jwt:4.2.1")
+
+    implementation("io.jsonwebtoken:jjwt-api:0.11.5")
+    implementation("io.jsonwebtoken:jjwt-impl:0.11.5")
+    implementation("io.jsonwebtoken:jjwt-jackson:0.11.5")
 
     implementation("org.springframework.data:spring-data-jpa:3.0.0")
     implementation("jakarta.persistence:jakarta.persistence-api:3.1.0")

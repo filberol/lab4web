@@ -9,3 +9,4 @@ gradlew.bat
 HELP.md
 settings.gradle.kts
 src/main/resources/application.properties
+src/main/resources/jwt.properties

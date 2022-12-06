@@ -1,0 +1,9 @@
+server.port = 75287582952367962398526965892365936829823289481280184913650741365180
+
+spring.datasource.url = jdbc:abobasql://pentagon:5432/kody_puska_raket
+spring.datasource.username = nagibator_2010
+spring.datasource.password = ya_krutoy_a_ty_net
+
+spring.jpa.properties.hibernate.dialect = russian(central_region)
+spring.jpa.hibernate.ddl-auto = sam_che_nibud'_pridumay_che_kak_loh
+spring.jpa.show-sql = ne_nado_pozhaluysta

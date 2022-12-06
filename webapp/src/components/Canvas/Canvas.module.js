@@ -4,12 +4,12 @@ export function draw(radio) {
     const height = canvas.height
     const width = canvas.width
     const scale = radio/2
-    ctx.fillStyle = "rgba(255, 255, 255, 1)"
+    ctx.fillStyle = "aliceblue"
     ctx.fillRect(0, 0, width, height)
 
     //draw figures
-    ctx.strokeStyle = "rgba(30,107,195,0.9)"
-    ctx.fillStyle = "rgba(73,158,255,0.9)"
+    ctx.strokeStyle = "darkgray"
+    ctx.fillStyle = "lightgray"
     drawTriangle(width/2, height/2, width/2, height/2 + height/2*scale, width/2 - width/4*scale, height/2, ctx)
     ctx.stroke()
     ctx.moveTo(width/2, height/2)
@@ -83,17 +83,3 @@ export function drawHit(x, y, r, transform) {
     ctx.fill()
     ctx.stroke()
 }
-
-//Переделать под реакт
-// function draw_hits_for_r(radio) {
-//     const value = document.querySelector("input[type='radio']:checked").value
-//     draw(value)
-//     let table = document.getElementById("results");
-//
-//     for (let i = 1; i < table.rows.length; i++) {
-//         let cords = JSON.parse("[" + table.rows[i].cells[0].innerText + "]")
-//         if (cords[2] == value) {
-//             drawHit(cords[0], cords[1], 3, true)
-//         }
-//     }
-// }

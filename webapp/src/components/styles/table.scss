@@ -1,0 +1,15 @@
+table {
+  width: 580px;
+  margin: 10px;
+  border-radius: 5px;
+  border: 2px solid darkcyan;
+  background-color: rgba(127, 255, 212, 0.5);
+}
+
+th, td {
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 2px 5px 2px 5px;
+  background-color: aliceblue;
+  text-align: center;
+}
