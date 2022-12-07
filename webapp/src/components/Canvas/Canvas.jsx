@@ -11,7 +11,7 @@ function Canvas(props) {
         try {
             Array.from(props.points).forEach((point) => {
                 if (point.coords[2] === props.currRadio) {
-                    drawHit(point.coords[0], point.coords[1], point.coords[2], true)
+                    drawHit(point.coords[0], point.coords[1], 2, true)
                 }
             })
         } catch (e) {}
