@@ -40,6 +40,12 @@ function Main() {
         })
     }
 
+    function sendCertainRequest(x, y, r) {
+        requestHitResult(login, token, [x, y, r], "PATCH", (result) => {
+            setHits(result.hits)
+        })
+    }
+
     function sendDelete() {
         requestHitResult(login, token, null, "DELETE", (result) => {
             setHits(result.hits)
@@ -52,7 +58,7 @@ function Main() {
                 <Canvas
                     points={hitArray}
                     currRadio={currR}
-                    submitter={sendRequest}
+                    submitter={sendCertainRequest}
                 />
                 <InputForm
                     states={{x: currX, y: currY, r: currR}}

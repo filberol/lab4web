@@ -8,7 +8,7 @@ function tableFromArray(hits) {
     return (
         Array.from(hits).map((hit, index) =>
             <tr key={index}>
-                <td>{hit.coords}</td>
+                <td>{hit.coords[0].toFixed(2) + " " + hit.coords[1].toFixed(2) +  " " + hit.coords[2].toFixed(1)}</td>
                 <td>{hit.time}</td>
                 <td>{hit.exec}</td>
                 <td>{hit.result}</td>
@@ -28,8 +28,8 @@ function Table(props) {
                 <tr>
                     <td>Координаты</td>
                     <td>Время</td>
-                    <td>Исполнение</td>
-                    <td>Результат</td>
+                    <td>t, mcS</td>
+                    <td>Итог</td>
                 </tr>
                 {
                     tableFromArray(props.hits)

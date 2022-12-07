@@ -1,5 +1,6 @@
 package com.web.lab4web.service
 
+import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
 import org.springframework.stereotype.Service
@@ -28,13 +29,18 @@ class JwtService {
     }
 
     fun validateToken(username: String, token: String): Boolean {
-        return Jwts.parserBuilder()
-            .setSigningKey(signKey)
-            .build()
-            .parseClaimsJws(token)
-            .body
-            .subject
-            .equals(username)
+        return try {
+            Jwts.parserBuilder()
+                .setSigningKey(signKey)
+                .build()
+                .parseClaimsJws(token)
+                .body
+                .subject
+                .equals(username)
+        } catch (e: ExpiredJwtException) {
+            false
+        }
+
     }
     companion object DateUtils {
         private fun addHoursToJavaUtilDate(date: Date, hours: Int): Date? {

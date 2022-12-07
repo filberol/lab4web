@@ -42,8 +42,8 @@ class HitsController {
 
     @PatchMapping
     fun addValidateHit(@Validated @RequestBody hitRec: HitDto): ResponseEntity<Any> {
+        val start = System.nanoTime()
         return if (tokenService.validateToken(hitRec.username, hitRec.token)) {
-            val start = System.currentTimeMillis()
             val time = ZonedDateTime.now()
             val res = areaChecker.checkHit(hitRec).toString()
             val checkedHitEntity = HitEntity().also {
@@ -53,7 +53,7 @@ class HitsController {
                 it.time = time
                 it.name = hitRec.username
                 it.result = res
-                it.execution = System.currentTimeMillis()-start
+                it.execution = (System.nanoTime()-start)/1000
             }
             hitsRepository.save(checkedHitEntity)
             val hits = hitsRepository.findAllByName(hitRec.username)
@@ -80,7 +80,7 @@ class HitsController {
     }
 
     private fun getOkResponseFromEntityArray(hits: List<HitEntity>?): ResponseEntity<Any> {
-        val formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm:ss")
+        val formatter = DateTimeFormatter.ofPattern("MM/dd/yy HH:mm:ss")
         return ResponseEntity.ok().body(
             HitsForUserDto("ok", null, hits!!.map {
                 HitResDto(

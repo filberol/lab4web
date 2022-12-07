@@ -26,9 +26,7 @@ function InputForm(props) {
 
     const handleDelete = async (e) => {
         e.preventDefault()
-        if (validateProps(props.states, setErrorMessage)) {
-            props.deleter()
-        }
+        props.deleter()
     }
 
     return (
