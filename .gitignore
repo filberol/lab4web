@@ -3,6 +3,7 @@
 gradle
 build
 webapp/node_modules
+webapp/build
 
 gradlew
 gradlew.bat

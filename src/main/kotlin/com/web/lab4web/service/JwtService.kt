@@ -3,21 +3,20 @@ package com.web.lab4web.service
 import io.jsonwebtoken.ExpiredJwtException
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.stereotype.Service
-import java.io.FileInputStream
 import java.util.*
 
 
 @Service
 class JwtService {
-    private final val properties = Properties().also {
-        it.load(FileInputStream("src/main/resources/jwt.properties"))
-    }
-    private val secret = properties.getProperty("jwt_secret_key")
-    private val expired = properties.getProperty("jwt_token_timeout_hours").toInt()
-    private val signKey = Keys.hmacShaKeyFor(secret.toByteArray())
+    @Value ("\${jwt_secret_key}")
+    private lateinit var secret: String
+    @Value ("\${jwt_token_timeout_hours}")
+    private var expired: Int = 12
 
     fun generateForUser(username: String): String {
+        val signKey = Keys.hmacShaKeyFor(secret.toByteArray())
         return Jwts.builder()
             .setSubject(username)
             .setIssuedAt(Date())
@@ -29,6 +28,7 @@ class JwtService {
     }
 
     fun validateToken(username: String, token: String): Boolean {
+        val signKey = Keys.hmacShaKeyFor(secret.toByteArray())
         return try {
             Jwts.parserBuilder()
                 .setSigningKey(signKey)
